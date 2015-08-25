@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load pytags %}
+
+{% block body %}
+
+<div class="container">
+
+  <h1 class="text-center">BMMB554 | Bioinformatics 1<br><small>Foundations in Data Driven Life Sciences</small></h1> 
+
+  <hr>
+
+  <h2 class="text-center">How does this class work?</h2>
+
+  Our course is divided into sixteen topics. Each topic is roughly equivalent to two 2-hour lectures. Every <strong>Wednesday</strong> we will be posting new slides (<i class="fa fa-tv"></i>) and videos (<i class="fa fa-vimeo"></i>) corresponding to a single section (you will also receive an e-mail notification). In addition, we will provide links to a set of key publications. You are <strong>expected</strong> to read these.Homeworks will be published on-line either the same <strong>Wednesday</strong> or the following <strong>Thursday</strong>. You will have one week to complete and submit the homework for the evaluation. 
+
+  <hr>
+
+  <h2 class="text-center">Instructors and Coordinates</h2>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="text-center"><small>Instructor</small></h2>
+          <div class="media">
+            <div class="media-left">
+              <a href="http://nekrut.bx.psu.edu"><img class="media-object" src="/pics/anton.jpg" alt="anton"></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Anton Nekrutenko</h4>
+              <address>
+                <strong>Penn State</strong><br>
+                BMB<br>
+                Wartik 505B<br>
+                University Park, PA, 16803<br>
+                <abbr title="Phone">P:</abbr> (814) 865-4752<br>
+                <a href="mailto:aun1@psu.edu?Subject=BMMB554">aun1@psu.edu</a>
+              </address>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-center"><small>Teaching Assistant</small></h2>
+        <div class="media">
+            <div class="media-left">
+              <a href="http://www.bx.psu.edu/~boris/"><img class="media-object" src="/pics/boris.jpg" alt="boris"></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Boris Rebolledo Jaramillo</h4>
+              <address>
+                <strong>Penn State</strong><br>
+                IBIOS<br>
+                Wartik 505<br>
+                University Park, PA, 16803<br>
+                <abbr title="Phone">P:</abbr>(814) 865-4752<br>
+                <a href="mailto:aun1@psu.edu?Subject=BMMB554">ber5099@psu.edu</a>
+              </address>
+            </div>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  <hr>
+                
+  <h2 class="text-center">Topics</h2>
+    
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><i class="fa fa-calendar la-lg"></i></th>
+        <th>Topic</th>
+        <th>Reading</th>
+        <th>Homework</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in context.lectures %}
+      <tr>
+        <td>{{row.date}}</td>
+        <td>
+          <div class="row">
+            <div class="col-md-1">
+                {% if row.slides != 'na' %}
+                <a href="{{row.slides}}"><i class="fa fa-tv"></i></a>
+                {% else %}
+                <i class="fa fa-tv"></i>
+                {% endif %}
+              </div>
+              <div class="col-md-1">
+                {% if row.videos != 'na' %}
+                <a href="{{row.videos}}"><i class="fa fa-vimeo"></i></a>
+                {% else %}
+                <i class="fa fa-vimeo"></i>
+                {% endif %}
+              </div>                    
+              <div class="col-md-10">
+                {{row.title}}
+              </div>
+            </div> 
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-2">
+                <ul class="list-unstyled">
+                  {% for url in row.urls %}
+                  <li>
+                    <a href="{{url}}"><i class="fa fa-external-link"></i></a>
+                  </li>
+                  {% empty %}
+                  <!-- Do nothing -->
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-10">
+                <ul class="list-unstyled">
+                  {% for pub in row.pubs %}
+                  <li>{{pub}}</li>
+                  {% empty %}                      
+                  <!-- Do nothing -->                                    
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </td>            
+          <td>{{row.homework}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+
+    <hr>
+
+    <h2 id="policy">Academic Integrity</h2>
+
+        <blockquote>
+            <small>
+                <i class="fa fa-quote-left fa-2x pull-left fa-border"></i>
+
+                In an examination setting, unless the instructor gives explicit prior instructions to the contrary, violations of academic integrity shall consist of any attempt to receive assistance from written or printed aids, from any person or papers or electronic devices, or of any attempt to give assistance, whether the student doing so has completed his or her own work or not.  Other violations include, but are not limited to, any attempt to gain an unfair advantage in regard to an examination, such as tampering with a graded exam or claiming another's work to be one's own.  Other assessments (including ANGEL-administered quizzes and assessments as well as homework assignments) are expected to represent your own independent work unless specifically stated otherwise.  Failure to comply will lead to sanctions against the student in accordance with the Policy on Academic Integrity in the Eberly College of Science. 
+
+                The Eberly College of Science <a href="http://science.psu.edu/climate/code-of-mutual-respect-and-cooperation/Code-of-Mutual-Respect%20final.pdf">Code of Mutual Respect and Cooperation</a> embodies the values that we hope our faculty, staff, and students possess and will endorse to make The Eberly College of Science a place where every individual feels respected and valued, as well as challenged and rewarded.
+ 
+                The Eberly College of Science is committed to the academic success of students enrolled in the College's  courses and undergraduate programs. When in need of help, students can utilize various College and University wide <a href="http://www.science.psu.edu/advising/success">resources for learning assistance</a>.
+
+                Penn State welcomes students with disabilities into the University's educational programs. If you have a disability-related need for reasonable academic adjustments in this course, contact the Office for Disability Services (ODS) at 814-863-1807 (V/TTY). For further information regarding ODS, please visit the Office for Disability Services <a href="http://equity.psu.edu/ods/">Web site</a>.   In order to receive consideration for course accommodations, you must contact ODS and provide documentation (<a href="http://equity.psu.edu/ods/guidelines">see the documentation guidelines</a>). If the documentation supports the need for academic adjustments, ODS will provide a letter identifying appropriate academic adjustments. Please share this letter and discuss the adjustments with your instructor as early in the course as possible. You must contact ODS and request academic adjustment letters at the beginning of each semester.
+            </small>
+        </blockquote>
+
+    </div>
+    <footer class="bs-footer">
+    
+    <div class="panel panel-info">
+      <div class="panel-heading">
+    <div class="container">
+      
+      Last modified: {{ page.last_modified }} | Our coordinates are: 505 Wartik Lab, Penn State University, University Park, PA, 16802 (814) 865-4752 | This site is powered by PyBlue <a href="https://github.com/ialbert/pyblue"><i class="fa fa-github"></i></a>
+    </div>
+    </div>
+  </div>
+    <div class="row"><br></div>
+      
+</footer>
+        
+
+
+{% endblock %}
