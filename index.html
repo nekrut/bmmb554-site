@@ -61,7 +61,7 @@
 
   </div>
   <div class="panel panel-warning">
-  <div class="panel-heading"><i class="fa fa-warning fa-lg"></i><strong> Importnat note on e-mail communication</strong></div>
+  <div class="panel-heading"><i class="fa fa-warning fa-lg"></i><strong> Important note on e-mail communication</strong></div>
   <div class="panel-body">
     Use <strong>only</strong> PSU e-mail addresses to communicate with us (the ones listed above)! We will not see or respond to messages sent through the Angel course managment system. This is essential for our effective communication during this course.
   </div>
@@ -106,26 +106,20 @@
           </td>
           <td>
             <div class="row">
-              <div class="col-md-2">
+              
+                {% regroup row.pubs by year as year_list %}
                 <ul class="list-unstyled">
-                  {% for url in row.urls %}
-                  <li>
-                    <a href="{{url}}"><i class="fa fa-external-link"></i></a>
+                  {% for year in year_list %}
+                  <li>{{ year.grouper }}
+                    <ul>
+                     {% for item in year.list %}
+                        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                      {% endfor %}
+                    </ul>
                   </li>
-                  {% empty %}
-                  <!-- Do nothing -->
-                  {% endfor %}
+                {% endfor %}
                 </ul>
-              </div>
-              <div class="col-md-10">
-                <ul class="list-unstyled">
-                  {% for pub in row.pubs %}
-                  <li>{{pub}}</li>
-                  {% empty %}                      
-                  <!-- Do nothing -->                                    
-                  {% endfor %}
-                </ul>
-              </div>
+              
             </div>
           </td>            
           <td>{{row.homework}}</td>
@@ -136,7 +130,7 @@
 
     <hr>
 
-    <h2 class="text-center" id="policy">Academic Integrity</h2>
+    <h2 class="text-center" id="policy">Academic Integrity Policy</h2>
 
         <blockquote>
             <small>
@@ -158,12 +152,11 @@
     <div class="panel panel-info">
       <div class="panel-heading">
     <div class="container">
-      
-      Last modified: {{ page.last_modified }} | Our coordinates are: 505 Wartik Lab, Penn State University, University Park, PA, 16802 (814) 865-4752 | This site is powered by PyBlue <a href="https://github.com/ialbert/pyblue"><i class="fa fa-github"></i></a>
+    <p class="text-center">  
+    Updated on {{ page.last_modified }} &bull; Powered by PyBlue <a href="https://github.com/ialbert/pyblue"><i class="fa fa-github"></i></a></p>
     </div>
     </div>
   </div>
-    <div class="row"><br></div>
       
 </footer>
         
