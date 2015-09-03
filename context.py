@@ -25,10 +25,17 @@ lectures = [
     dict(
         date="9/2/15",
         title="Human Genome Project",
-        pubs = [],
-        slides="na",
-        videos="na",
-        homework="",
+        pubs = [
+                    { 'year' : '2000', 'title' : 'Drosophila genome - Adams et al.', 'url' : 'http://www.sciencemag.org/content/287/5461/2185.short' },
+                    { 'year' : '2001', 'title' : 'Assembling Puzzles from Preassembled Blocks - Pevzner', 'url' : 'http://genome.cshlp.org/content/11/9/1461.full' },
+                    { 'year' : '2001', 'title' : 'GigAssembler - Kent, Haussler', 'url' : 'http://genome.cshlp.org/content/11/9/1541.full' },
+                    { 'year' : '2001', 'title' : 'Human Genome (Public Effort) - Lander et al.', 'url' : 'http://www.nature.com/nature/journal/v409/n6822/pdf/409860a0.pdf' },
+                    { 'year' : '2001', 'title' : 'Human Genome (Celera) - Venter et al.', 'url': 'http://www.sciencemag.org/content/291/5507/1304.short' },
+                    { 'year' : '2015', 'title' : 'Mike Schatz (CSHL) assembly slides', 'url' : 'http://schatzlab.cshl.edu/presentations/' },
+        ],
+        slides="https://speakerdeck.com/nekrut/topic-2-bmmb554-fall2015#",
+        videos="https://vimeo.com/138127725",
+        homework="Read Lander et al. Human Genome Paper (it is a great paper to read and we will soon have more interactive homeworks too). In one page or less describe the most suprising aspect of the paper from your standpoint.",
     ),
 
     # Lecture 3
